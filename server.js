@@ -23,7 +23,7 @@ var app = express()
 		});
 		res.json({type : locations.type, features : filtered });
 	})
-	.use(express.static(__dirname + '/dist'));
+	.use(express.static(__dirname + '/dist/'));
 
 var port = process.env.PORT || 3030;
 var server = http.createServer(app).listen(port);
