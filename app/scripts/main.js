@@ -4,7 +4,7 @@
 	var cloudmadApiKey = '96fd484b35cf4e21ab4a7569ae8ac413';
 	var map = L.map('map').setView([39.9500, -75.1700], 13);
 
-	var layer = L.tileLayer('http://{s}.tile.cloudmade.com/' + cloudmadApiKey + '/111829/256/{z}/{x}/{y}.png', {
+	L.tileLayer('http://{s}.tile.cloudmade.com/' + cloudmadApiKey + '/111829/256/{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 		maxZoom: 18
 	}).addTo(map);
@@ -20,7 +20,7 @@
 		}).resize();
 
 		var geoLayer = null;
-		
+
 		var retrieveLocations = function(){
 			$.getJSON('/data/1_philly_farmers_market.json', {
 				bbox : map.getBounds().toBBoxString(),
@@ -33,7 +33,7 @@
 				geoLayer = L.geoJson(data, {
 					style: function (feature) {
 						console.log(feature);
-						return { 
+						return {
 							color: 'red'
 						};
 					},
