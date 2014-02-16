@@ -4,22 +4,26 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('./package.json'),
     jshint: {
       options: {
-        ignores: ['./node_modules', './public/bower_components/**/*.js', './**/*.min.js','src/tmp/**'],
+        ignores: ['./node_modules', './public/bower_components/**/*.js', './**/*.min.js', 'src/tmp/**'],
         jshintrc: '.jshintrc'
       },
       gruntfile: 'Gruntfile.js',
       all: ['src/**/*.js']
     },
-    copy : {
-      imgs : {
-        expand : true,
-        cwd : 'src/imgs',
-        src : './**',
-        dest : 'public/imgs/'
+    copy: {
+      imgs: {
+        expand: true,
+        cwd: 'src/imgs',
+        src: './**',
+        dest: 'public/imgs/'
       }
     },
-    bower : {
-      install : {}
+    bower: {
+      install: {
+        options: {
+          copy : false
+        }
+      }
     },
     uglify: {
       options: {
@@ -125,11 +129,11 @@ module.exports = function(grunt) {
         options: {
           livereload: 3355
         },
-        tasks: ['jshint','browserify', 'uglify']
+        tasks: ['jshint', 'browserify', 'uglify']
       },
-      copy : {
-        files : 'src/imgs/**',
-        tasks : ['copy:imgs']
+      copy: {
+        files: 'src/imgs/**',
+        tasks: ['copy:imgs']
       },
       less: {
         files: ['!**/node_modules/**', './**/*less'],
@@ -148,8 +152,7 @@ module.exports = function(grunt) {
         files: {
           'src/tmp/main.js': ['src/client/main.js'],
         },
-        options: {
-        }
+        options: {}
       }
     },
     // concurrent task
@@ -178,11 +181,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-bower-task');
-  
   // default tasks
-  grunt.registerTask('default', ['copy', 'jshint','browserify', 'uglify', 'imagemin', 'less', 'appcache', 'concurrent:server']);
-  grunt.registerTask('build', ['bower','copy', 'jshint','browserify', 'uglify', 'imagemin', 'less', 'appcache']);
-  
+  grunt.registerTask('build', ['bower', 'copy', 'jshint', 'browserify', 'uglify', 'imagemin', 'less', 'appcache']);
+  grunt.registerTask('default', ['build', 'concurrent:server']);
   // server task
   grunt.registerTask('server', ['concurrent:server']);
   // to use the debug task, install node-inspector

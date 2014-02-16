@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "start": "node src/app",
-    "postinstall": "echo postinstall time; ./node_modules/grunt/bin/grunt build"
+    "postinstall" : "echo 'Starting grunt.'; ./node_modules/grunt-cli/bin/grunt build"
   },
   "dependencies": {
     "express": "3.4.0",
     "jade": "0.35.0",
     "connect": "~2.13.0",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.13"
   },
   "devDependencies": {
     "browserify": "~3.30.0",
