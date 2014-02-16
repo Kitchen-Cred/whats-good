@@ -16,7 +16,8 @@ module.exports.init = function(api) {
 				prefix: 'fa'
 			});
 			L.marker(location, {
-				icon: icon
+				icon: icon,
+				title : 'Current Location'
 			}).addTo(map);
 			map.panTo(location, {
 				animate: true,
@@ -25,7 +26,7 @@ module.exports.init = function(api) {
 		});
 	}
 	//define marker colors
-	var setMarker = function(feature, layer, selected) {
+	var setIcon = function(feature, layer, selected) {
 		var markerColor = feature.properties.TYPE === 'FARMERS_MARKET' ? 'orange' : 'green';
 		markerColor = selected ? 're' : markerColor;
 		layer.setIcon(new L.AwesomeMarkers.icon({
@@ -38,6 +39,7 @@ module.exports.init = function(api) {
 	//selected feature.
 	var selectedLayer;
 	var selectedFeature;
+	
 	//add the locations to the map.
 	api.getLocations().done(function(features) {
 		var featureLayer = L.geoJson(features, {
@@ -49,13 +51,13 @@ module.exports.init = function(api) {
 						duration: 0.25
 					});
 					if (selectedFeature && selectedFeature !== feature) {
-						setMarker(selectedFeature, selectedLayer, false);
+						setIcon(selectedFeature, selectedLayer, false);
 					}
-					setMarker(feature, layer, true);
+					setIcon(feature, layer, true);
 					selectedFeature = feature;
 					selectedLayer = layer;
 				});
-				setMarker(feature, layer);
+				setIcon(feature, layer);
 			}
 		});
 		featureLayer.addTo(map);
