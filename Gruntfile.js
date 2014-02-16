@@ -10,6 +10,13 @@ module.exports = function(grunt) {
       gruntfile: 'Gruntfile.js',
       all: ['src/**/*.js']
     },
+    copy : {
+      imgs : {
+        files : {
+          'public/imgs' : 'src/imgs/**'
+        }
+      }
+    },
     uglify: {
       options: {
         banner: '<%= banner %>',
@@ -46,7 +53,7 @@ module.exports = function(grunt) {
         dest: 'public/manifest.appcache',
         cache: ['public/**/*', '!public/manifest.appcache'],
         network: '*',
-        fallback: '/ /'
+        fallback: '/ /offline'
       }
     },
     /*
@@ -105,7 +112,7 @@ module.exports = function(grunt) {
         tasks: ['jshint:gruntfile'],
       },
       appcache: {
-        files: 'public/**/*',
+        files: ['public/**/*', 'src/views/*', '!public/manifest.appcache'],
         tasks: ['appcache']
       },
       scripts: {
@@ -115,6 +122,10 @@ module.exports = function(grunt) {
           livereload: 3355
         },
         tasks: ['jshint','browserify', 'uglify']
+      },
+      copy : {
+        files : 'src/imgs/**',
+        tasks : ['copy:imgs']
       },
       less: {
         files: ['!**/node_modules/**', './**/*less'],
@@ -161,8 +172,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+
   // default tasks
-  grunt.registerTask('default', ['jshint','browserify', 'uglify', 'imagemin', 'less', 'appcache', 'concurrent:server']);
+  grunt.registerTask('default', ['copy', 'jshint','browserify', 'uglify', 'imagemin', 'less', 'appcache', 'concurrent:server']);
   // server task
   grunt.registerTask('server', ['concurrent:server']);
   // to use the debug task, install node-inspector

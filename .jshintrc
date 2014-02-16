@@ -6,10 +6,8 @@
   "eqnull": true,
   "multistr": true,
   "asi": false,
-  "quotmark": "single",
   "plusplus": true,
   "nomen": true,
-  "indent": 2,
   "newcap": true,
   "nonew": true,
   "undef": true,
@@ -18,6 +16,8 @@
     "browser": true,
     "$" : true,
     "jQuery" : true,
-    "Zepto" : true
+    "Zepto" : true,
+    "window" : true,
+    "L" : true
   }
 }

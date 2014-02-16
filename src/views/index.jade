@@ -4,10 +4,14 @@ html(lang="en",manifest="manifest.appcache")
     meta(charset="utf-8")
     title= title
     link(rel="stylesheet", href="/css/style.css")
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css")
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css")
   body
-    #header
-      h1= title
+    #header.
+      What's good?
     #map
     #footer
     script(src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
     script(src="/js/main.min.js")
