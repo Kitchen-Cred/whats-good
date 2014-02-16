@@ -1,0 +1,1 @@
+$ = jQuery = Zepto = require('../../client_components/zepto/zepto.js');
