@@ -13,8 +13,6 @@
     "underscore": "~1.6.0",
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.13"
-  },
-  "devDependencies": {
     "browserify": "~3.30.0",
     "grunt-appcache": "~0.1.2",
     "grunt": "0.4.1",
