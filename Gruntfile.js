@@ -12,10 +12,14 @@ module.exports = function(grunt) {
     },
     copy : {
       imgs : {
-        files : {
-          'public/imgs' : 'src/imgs/**'
-        }
+        expand : true,
+        cwd : 'src/imgs',
+        src : './**',
+        dest : 'public/imgs/'
       }
+    },
+    bower : {
+      install : {}
     },
     uglify: {
       options: {
@@ -173,9 +177,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-copy');
-
+  grunt.loadNpmTasks('grunt-bower-task');
+  
   // default tasks
   grunt.registerTask('default', ['copy', 'jshint','browserify', 'uglify', 'imagemin', 'less', 'appcache', 'concurrent:server']);
+  grunt.registerTask('build', ['bower','copy', 'jshint','browserify', 'uglify', 'imagemin', 'less', 'appcache']);
+  
   // server task
   grunt.registerTask('server', ['concurrent:server']);
   // to use the debug task, install node-inspector

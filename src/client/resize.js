@@ -2,7 +2,7 @@
 	"use strict";
 	var h = $('#header');
 	var m = $('#map');
-	var f = $('#footer');
+	var f = $('#tabs');
 	var w = $(window);
 	var followup;
 	var handleResize = function() {
