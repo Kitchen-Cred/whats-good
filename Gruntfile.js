@@ -14,8 +14,14 @@ module.exports = function(grunt) {
       imgs: {
         expand: true,
         cwd: 'src/imgs',
-        src: './**',
+        src: ['./**', '!./**/*icon*'],
         dest: 'public/imgs/'
+      },
+      icons: {
+        expand: true,
+        cwd: 'src/imgs',
+        src: './**/*icon*.png',
+        dest: 'public/'
       }
     },
     bower: {
@@ -133,7 +139,7 @@ module.exports = function(grunt) {
       },
       copy: {
         files: 'src/imgs/**',
-        tasks: ['copy:imgs']
+        tasks: ['copy']
       },
       less: {
         files: ['!**/node_modules/**', './**/*less'],

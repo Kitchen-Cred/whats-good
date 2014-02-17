@@ -2,14 +2,14 @@
  * Home page router
  */
 exports.init = function(app) {
-	app.get('/', function(req, res) {
+	app.get('/' , function(req, res) {
 		res.render('index', {
-			title: 'What\'s good? by KitchenCred.org'
+			title: 'What\'s good?'
 		});
 	});
-	app.get('/offline', function(req, res) {
+	app.get('/offline' , function(req, res) {
 		res.render('index', {
-			title: 'What\'s good? by KitchenCred.org (offline)'
+			title: 'What\'s good?'
 		});
 	});
 };

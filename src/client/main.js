@@ -7,6 +7,8 @@ $(function() {
 	$(window).resize(handleResize);
 	$(window).resize();
 
+	require('./appcache');
+
 	var App = {};
 	//configure the map.
 	App.api = require('./api');
