@@ -8,6 +8,7 @@ module.exports = function(app) {
 	});
 	tiles.addTo(map);
 	var currentCenter;
+	var currentMarker;
 	//show the compass marker.
 	if (window.navigator.geolocation) {
 		window.navigator.geolocation.watchPosition(function(position) {
@@ -18,14 +19,17 @@ module.exports = function(app) {
 				markerColor: 'blue',
 				prefix: 'fa'
 			});
-			L.marker(location, {
-				icon: icon,
-				title: 'Current Location'
-			}).addTo(map);
-			if (!currentCenter) {
-				currentCenter = location;
-				recenter(location);
+			if(!currentMarker){			
+				currentMarker = L.marker(location, {
+					icon: icon,
+					title: 'Current Location'
+				}).addTo(map);
+				if (!currentCenter) {
+					currentCenter = location;
+					recenter(location);
+				}
 			}
+			currentMarker.setLatLng(location);
 		});
 	}
 	

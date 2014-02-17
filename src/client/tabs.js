@@ -14,7 +14,6 @@ module.exports = (function(app) {
 		currentFeature = feature;
 		$(window).resize();
 		$('#tabs li[data-name="info"]').click();
-		console.log(currentFeature);
 	};
 	var hideFeature = function() {
 		$('#tabs').removeClass('shown');
