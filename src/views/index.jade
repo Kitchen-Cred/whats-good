@@ -2,6 +2,9 @@ doctype 5
 html(lang="en",manifest="manifest.appcache")
   head
     meta(charset="utf-8")
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style", content="black")
+    meta(name="viewport",content="width=320, user-scalable=no")
     title= title
     link(rel="stylesheet", href="/css/style.css")
     link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css")
@@ -23,8 +26,6 @@ html(lang="en",manifest="manifest.appcache")
             li(data-name="cost")
                 i.fa.fa-usd
                 |  Price
-            li.close
-                i.fa.fa-times-circle-o
         #tab-info
             .name [[properties.OFFICIAL_S || ("Farmer's Market: " + properties.ADDRESS)]]
         #tab-organics
@@ -37,3 +38,4 @@ html(lang="en",manifest="manifest.appcache")
     script(src="//cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.min.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
     script(src="/js/main.min.js")
+    srcipt(src="//cdnjs.cloudflare.com/ajax/libs/retina.js/1.0.1/retina.js")
