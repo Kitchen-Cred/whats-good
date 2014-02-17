@@ -2,12 +2,11 @@
 	"use strict";
 	var h = $('#header');
 	var m = $('#map');
-	var f = $('#tabs');
 	var w = $(window);
 	var followup;
 	var handleResize = function() {
 		var hh = h.height();
-		var fh = f.height();
+		var fh = $('#tabs.shown').height();
 		var wh = w.height();
 		m.height(wh - (hh + fh));
 		if (followup) {

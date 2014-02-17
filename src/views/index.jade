@@ -13,6 +13,26 @@ html(lang="en",manifest="manifest.appcache")
         img(src="/imgs/kitchen_cred_logo.png", alt="Kitchen Cred")
     #map
     #tabs
+        ul
+            li(data-name="info").selected
+                i.fa.fa-info-circle 
+                |  Info
+            li(data-name="organics")
+                i.fa.fa-leaf
+                |  Organics
+            li(data-name="cost")
+                i.fa.fa-usd
+                |  Price
+            li.close
+                i.fa.fa-times-circle-o
+        #tab-info
+            .name [[properties.OFFICIAL_S || ("Farmer's Market: " + properties.ADDRESS)]]
+        #tab-organics
+            .noinfo.
+                No information about organic food availability is currently available.
+        #tab-cost
+            .noinfo.
+                No cost information is currently available.
     script(src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.min.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")

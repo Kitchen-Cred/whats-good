@@ -7,7 +7,9 @@ $(function() {
 	$(window).resize(handleResize);
 	$(window).resize();
 
+	var App = {};
 	//configure the map.
-	var clientApi = require('./api');
-	var mapInit = require('./map').init(clientApi);
+	App.api = require('./api');
+	App.tabs = require('./tabs');
+	App.map = require('./map')(App);
 });

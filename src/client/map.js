@@ -1,10 +1,13 @@
-module.exports.init = function(api) {
+module.exports = function(app) {
+	var api = app.api;
 	var map = L.map('map').setView([39.95, -75.166667], 15);
 	var tiles = L.tileLayer('http://{s}.tile.cloudmade.com/96fd484b35cf4e21ab4a7569ae8ac413/121335/256/{z}/{x}/{y}.png', {
 		maxZoom: 18,
-		attribution: ''
+		attribution: '',
+		trackResize : true
 	});
 	tiles.addTo(map);
+	var currentCenter;
 	//show the compass marker.
 	if (window.navigator.geolocation) {
 		window.navigator.geolocation.watchPosition(function(position) {
@@ -17,45 +20,61 @@ module.exports.init = function(api) {
 			});
 			L.marker(location, {
 				icon: icon,
-				title : 'Current Location'
+				title: 'Current Location'
 			}).addTo(map);
-			map.panTo(location, {
-				animate: true,
-				duration: 0.75
-			});
+			if (!currentCenter) {
+				currentCenter = location;
+				recenter(location);
+			}
 		});
 	}
+	
+	var recenter = function(location, duration) {
+		if (location) {
+			map.panTo(location, {
+				animate: true,
+				duration: duration || 0.75
+			});
+		}
+	};
+
+	map.on('resize', function(e) {
+		recenter(currentCenter, 0.1);
+	});
+
 	//define marker colors
 	var setIcon = function(feature, layer, selected) {
 		var markerColor = feature.properties.TYPE === 'FARMERS_MARKET' ? 'orange' : 'green';
+		var marker = feature.properties.TYPE === 'FARMERS_MARKET' ? 'leaf' : 'shopping-cart';
 		markerColor = selected ? 're' : markerColor;
 		layer.setIcon(new L.AwesomeMarkers.icon({
-			icon: 'cutlery',
+			icon: marker,
 			markerColor: markerColor,
 			prefix: 'fa'
 		}));
 	};
-
 	//selected feature.
 	var selectedLayer;
 	var selectedFeature;
-	
 	//add the locations to the map.
 	api.getLocations().done(function(features) {
 		var featureLayer = L.geoJson(features, {
 			onEachFeature: function(feature, layer) {
 				layer.on('click', function() {
 					var latlng = feature.geometry.coordinates;
-					map.panTo([latlng[1], latlng[0]], {
-						animate: true,
-						duration: 0.25
-					});
+					currentCenter = [latlng[1], latlng[0]];
 					if (selectedFeature && selectedFeature !== feature) {
 						setIcon(selectedFeature, selectedLayer, false);
 					}
 					setIcon(feature, layer, true);
 					selectedFeature = feature;
 					selectedLayer = layer;
+					app.tabs.show(feature);
+					setTimeout(function(){
+						map.invalidateSize();
+						recenter(currentCenter, 0.25);
+					}, 1000);
+					recenter(currentCenter, 0.25);
 				});
 				setIcon(feature, layer);
 			}
