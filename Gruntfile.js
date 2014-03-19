@@ -4,7 +4,9 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('./package.json'),
     jshint: {
       options: {
-        ignores: ['./node_modules', './public/bower_components/**/*.js', './**/*.min.js', 'src/tmp/**'],
+        ignores: ['./node_modules',
+        './public/bower_components/**/*.js',
+        './**/*.min.js', 'src/tmp/**'],
         jshintrc: '.jshintrc'
       },
       gruntfile: 'Gruntfile.js',
@@ -22,7 +24,24 @@ module.exports = function(grunt) {
         cwd: 'src/imgs',
         src: './**/*icon*.png',
         dest: 'public/'
+      },
+			font_awesome_fonts : {
+				expand : true,
+				cwd: 'client_components/font-awesome/',
+				src: ['fonts/*','css/*.min.css'],
+				dest: 'public/components/fa'
+			},
+			jquery : {
+        src : 'client_components/jquery/dist/jquery.min.js',
+        dest : 'public/components/jquery/jquery.min.js'
+      },
+      leaflet_awesome_markers : {
+        cwd : 'client_components/Leaflet.awesome-markers/dist',
+        expand : true,
+        src : ['./images/**', './*.css', './*.min.js'],
+        dest : 'public/components/leaflet_awesome_markers'
       }
+
     },
     bower: {
       install: {

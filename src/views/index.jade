@@ -8,9 +8,9 @@ html(lang="en",manifest="manifest.appcache")
     title= title
     link(rel="apple-touch-icon-precomposed", href="/img/touch-icon-ipad-retina.png")
     link(rel="stylesheet", href="/css/style.css")
-    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css")
+    link(rel="stylesheet", href="/components/fa/css/font-awesome.min.css")
     link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css")
-    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.css")
+    link(rel="stylesheet", href="/components/leaflet_awesome_markers/leaflet.awesome-markers.css")
   body
     #header
       a(href="http://www.kitchencred.org")
@@ -19,7 +19,7 @@ html(lang="en",manifest="manifest.appcache")
     #tabs
         ul
             li(data-name="info").selected
-                i.fa.fa-info-circle 
+                i.fa.fa-info-circle
                 |  Info
             li(data-name="organics")
                 i.fa.fa-leaf
@@ -36,7 +36,7 @@ html(lang="en",manifest="manifest.appcache")
             .noinfo.
                 No cost information is currently available.
     script(src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js")
-    script(src="//cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.0/leaflet.awesome-markers.min.js")
-    script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+    script(src="/components/leaflet_awesome_markers/leaflet.awesome-markers.min.js")
+    script(src="/components/jquery/jquery.min.js")
     script(src="/js/main.min.js")
     srcipt(src="//cdnjs.cloudflare.com/ajax/libs/retina.js/1.0.1/retina.js")
