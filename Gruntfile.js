@@ -61,6 +61,11 @@ module.exports = function(grunt) {
         files: {
           'public/js/main.min.js': 'src/tmp/main.js'
         }
+      },
+      components : {
+        files : {
+          'public/components/retina_js/retina.min.js' : 'client_components/retina.js/src/retina.js'
+        }
       }
     },
     less: {
