@@ -10,10 +10,10 @@
   ],
   "dependencies": {
     "leaflet": "~0.7.2",
-    "zepto": "~1.1.2",
     "Leaflet.awesome-markers": "~2.0.1",
     "font-awesome": "~4.0.3",
     "retina.js": "~1.2.0",
-    "normalize-css": "~3.0.0"
+    "normalize-css": "~3.0.0",
+    "jquery": "~2.1.0"
   }
 }

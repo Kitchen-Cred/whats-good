@@ -32,8 +32,10 @@ module.exports = function(grunt) {
 				dest: 'public/components/fa'
 			},
 			jquery : {
-        src : 'client_components/jquery/dist/jquery.min.js',
-        dest : 'public/components/jquery/jquery.min.js'
+        expand : true,
+        cwd : 'client_components/jquery/dist/',
+        src : './jquery.min.js',
+        dest : 'public/components/jquery/'
       },
       leaflet_awesome_markers : {
         cwd : 'client_components/Leaflet.awesome-markers/dist',
