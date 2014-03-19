@@ -3174,6 +3174,10 @@
           "from": "async@~0.1.22"
         }
       }
+    },
+    "grunt-contrib-concat": {
+      "version": "0.3.0",
+      "from": "grunt-contrib-concat@"
     }
   }
 }
