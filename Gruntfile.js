@@ -40,8 +40,13 @@ module.exports = function(grunt) {
         expand : true,
         src : ['./images/**', './*.css', './*.min.js'],
         dest : 'public/components/leaflet_awesome_markers'
+      },
+      leadlet_css : {
+          cwd : 'client_components/leaflet/dist/',
+          expand : true,
+          src : '**',
+          dest : 'public/components/leaflet/'
       }
-
     },
     bower: {
       install: {
@@ -64,7 +69,8 @@ module.exports = function(grunt) {
       },
       components : {
         files : {
-          'public/components/retina_js/retina.min.js' : 'client_components/retina.js/src/retina.js'
+          'public/components/retina_js/retina.min.js' : 'client_components/retina.js/src/retina.js',
+          'public/components/leaflet/leaflet.min.js' : 'src/tmp/leaflet.js'
         }
       }
     },
@@ -181,6 +187,27 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'src/tmp/main.js': ['src/client/main.js'],
+          'src/tmp/leaflet.js' : [
+            'client_components/leaflet/src/Leaflet.js',
+            'client_components/leaflet/src/core/Util.js',
+            'client_components/leaflet/src/core/Class.js',
+            'client_components/leaflet/src/core/Events.js',
+            'client_components/leaflet/src/core/Browser.js',
+            'client_components/leaflet/src/geometry/Point.js',
+            'client_components/leaflet/src/geometry/Bounds.js',
+            'client_components/leaflet/src/geometry/Transformation.js',
+            'client_components/leaflet/src/dom/DomUtil.js',
+            'client_components/leaflet/src/geo/LatLng.js',
+            'client_components/leaflet/src/geo/LatLngBounds.js',
+            'client_components/leaflet/src/geo/projection/Projection.js',
+            'client_components/leaflet/src/geo/projection/Projection.SphericalMercator.js',
+            'client_components/leaflet/src/geo/projection/Projection.LonLat.js',
+            'client_components/leaflet/src/geo/crs/CRS.js',
+            'client_components/leaflet/src/geo/crs/CRS.Simple.js',
+            'client_components/leaflet/src/geo/crs/CRS.EPSG3857.js',
+            'client_components/leaflet/src/geo/crs/CRS.EPSG4326.js',
+            'client_components/leaflet/src/map/Map.js'
+          ]
         },
         options: {}
       }
