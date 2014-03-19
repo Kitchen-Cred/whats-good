@@ -41,7 +41,7 @@ module.exports = function(grunt) {
         src : ['./images/**', './*.css', './*.min.js'],
         dest : 'public/components/leaflet_awesome_markers'
       },
-      leadlet_css : {
+      leaflet_css : {
           cwd : 'client_components/leaflet/dist/',
           expand : true,
           src : '**',
