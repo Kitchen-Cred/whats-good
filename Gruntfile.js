@@ -100,6 +100,90 @@ module.exports = function(grunt) {
         fallback: '/ /offline'
       }
     },
+    concat : {
+      dist : {
+        files : {
+          'src/tmp/leaflet.js' : [
+            'client_components/leaflet/src/Leaflet.js',
+            'client_components/leaflet/src/core/Util.js',
+            'client_components/leaflet/src/core/Browser.js',
+            'client_components/leaflet/src/core/Class.js',
+            'client_components/leaflet/src/core/Events.js',
+            'client_components/leaflet/src/core/Handler.js',
+            'client_components/leaflet/src/dom/DomUtil.js',
+            'client_components/leaflet/src/dom/DomEvent.js',
+            'client_components/leaflet/src/dom/DomEvent.DoubleTap.js',
+            'client_components/leaflet/src/dom/DomEvent.Pointer.js',
+            'client_components/leaflet/src/dom/Draggable.js',
+            'client_components/leaflet/src/dom/PosAnimation.Timer.js',
+            'client_components/leaflet/src/dom/PosAnimation.js',
+            'client_components/leaflet/src/geo/LatLng.js',
+            'client_components/leaflet/src/geo/LatLngBounds.js',
+            'client_components/leaflet/src/geometry/Bounds.js',
+            'client_components/leaflet/src/geometry/LineUtil.js',
+            'client_components/leaflet/src/geometry/Point.js',
+            'client_components/leaflet/src/geometry/PolyUtil.js',
+            'client_components/leaflet/src/geometry/Transformation.js',
+            'client_components/leaflet/src/geo/projection/Projection.js',
+            'client_components/leaflet/src/geo/projection/Projection.LonLat.js',
+            'client_components/leaflet/src/geo/projection/Projection.Mercator.js',
+            'client_components/leaflet/src/geo/projection/Projection.SphericalMercator.js',
+            'client_components/leaflet/src/geo/crs/CRS.js',
+            'client_components/leaflet/src/geo/crs/CRS.EPSG3395.js',
+            'client_components/leaflet/src/geo/crs/CRS.EPSG3857.js',
+            'client_components/leaflet/src/geo/crs/CRS.EPSG4326.js',
+            'client_components/leaflet/src/geo/crs/CRS.Simple.js',
+            'client_components/leaflet/src/map/Map.js',
+            'client_components/leaflet/src/control/Control.js',
+            'client_components/leaflet/src/control/Control.Attribution.js',
+            'client_components/leaflet/src/control/Control.Layers.js',
+            'client_components/leaflet/src/control/Control.Scale.js',
+            'client_components/leaflet/src/control/Control.Zoom.js',
+            'client_components/leaflet/src/copyright.js',
+            'client_components/leaflet/src/layer/vector/Path.js',
+            'client_components/leaflet/src/layer/vector/Path.Popup.js',
+            'client_components/leaflet/src/layer/vector/Path.SVG.js',
+            'client_components/leaflet/src/layer/vector/Path.VML.js',
+            'client_components/leaflet/src/layer/vector/Polyline.js',
+            'client_components/leaflet/src/layer/vector/Polygon.js',
+            'client_components/leaflet/src/layer/vector/Circle.js',
+            'client_components/leaflet/src/layer/vector/CircleMarker.js',
+            'client_components/leaflet/src/layer/vector/Rectangle.js',
+            'client_components/leaflet/src/layer/vector/canvas/Circle.Canvas.js',
+            'client_components/leaflet/src/layer/vector/canvas/CircleMarker.Canvas.js',
+            'client_components/leaflet/src/layer/vector/canvas/Path.Canvas.js',
+            'client_components/leaflet/src/layer/vector/canvas/Polygon.Canvas.js',
+            'client_components/leaflet/src/layer/vector/canvas/Polyline.Canvas.js',
+            'client_components/leaflet/src/layer/marker/Icon.js',
+            'client_components/leaflet/src/layer/marker/DivIcon.js',
+            'client_components/leaflet/src/layer/marker/Icon.Default.js',
+            'client_components/leaflet/src/layer/marker/Marker.js',
+            'client_components/leaflet/src/layer/marker/Marker.Drag.js',
+            'client_components/leaflet/src/layer/marker/Marker.Popup.js',
+            'client_components/leaflet/src/layer/LayerGroup.js',
+            'client_components/leaflet/src/layer/FeatureGroup.js',
+            'client_components/leaflet/src/layer/vector/MultiPoly.js',
+            'client_components/leaflet/src/layer/GeoJSON.js',
+            'client_components/leaflet/src/layer/ImageOverlay.js',
+            'client_components/leaflet/src/layer/Popup.js',
+            'client_components/leaflet/src/layer/tile/TileLayer.js',
+            'client_components/leaflet/src/layer/tile/TileLayer.Anim.js',
+            'client_components/leaflet/src/layer/tile/TileLayer.Canvas.js',
+            'client_components/leaflet/src/layer/tile/TileLayer.WMS.js',
+            'client_components/leaflet/src/map/anim/Map.PanAnimation.js',
+            'client_components/leaflet/src/map/anim/Map.ZoomAnimation.js',
+            'client_components/leaflet/src/map/ext/Map.Geolocation.js',
+            'client_components/leaflet/src/map/handler/Map.BoxZoom.js',
+            'client_components/leaflet/src/map/handler/Map.DoubleClickZoom.js',
+            'client_components/leaflet/src/map/handler/Map.Drag.js',
+            'client_components/leaflet/src/map/handler/Map.Keyboard.js',
+            'client_components/leaflet/src/map/handler/Map.ScrollWheelZoom.js',
+            'client_components/leaflet/src/map/handler/Map.Tap.js',
+            'client_components/leaflet/src/map/handler/Map.TouchZoom.js'
+            ]
+        }
+      }
+    },
     /*
     cssmin: {
       options: {
@@ -186,28 +270,7 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         files: {
-          'src/tmp/main.js': ['src/client/main.js'],
-          'src/tmp/leaflet.js' : [
-            'client_components/leaflet/src/Leaflet.js',
-            'client_components/leaflet/src/core/Util.js',
-            'client_components/leaflet/src/core/Class.js',
-            'client_components/leaflet/src/core/Events.js',
-            'client_components/leaflet/src/core/Browser.js',
-            'client_components/leaflet/src/geometry/Point.js',
-            'client_components/leaflet/src/geometry/Bounds.js',
-            'client_components/leaflet/src/geometry/Transformation.js',
-            'client_components/leaflet/src/dom/DomUtil.js',
-            'client_components/leaflet/src/geo/LatLng.js',
-            'client_components/leaflet/src/geo/LatLngBounds.js',
-            'client_components/leaflet/src/geo/projection/Projection.js',
-            'client_components/leaflet/src/geo/projection/Projection.SphericalMercator.js',
-            'client_components/leaflet/src/geo/projection/Projection.LonLat.js',
-            'client_components/leaflet/src/geo/crs/CRS.js',
-            'client_components/leaflet/src/geo/crs/CRS.Simple.js',
-            'client_components/leaflet/src/geo/crs/CRS.EPSG3857.js',
-            'client_components/leaflet/src/geo/crs/CRS.EPSG4326.js',
-            'client_components/leaflet/src/map/Map.js'
-          ]
+          'src/tmp/main.js': ['src/client/main.js']
         },
         options: {}
       }
@@ -238,8 +301,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   // default tasks
-  grunt.registerTask('build', ['bower', 'copy', 'jshint', 'browserify', 'uglify', 'imagemin', 'less', 'appcache']);
+  grunt.registerTask('build', ['bower', 'concat', 'copy', 'jshint', 'browserify', 'uglify', 'imagemin', 'less', 'appcache']);
   grunt.registerTask('default', ['build', 'concurrent:server']);
   // server task
   grunt.registerTask('server', ['concurrent:server']);
