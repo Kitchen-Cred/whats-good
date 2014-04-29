@@ -1,12 +1,20 @@
 module.exports = function(app) {
 	var api = app.api;
 	var map = L.map('map').setView([39.95, -75.166667], 15);
-	var tiles = L.tileLayer('http://{s}.tile.cloudmade.com/96fd484b35cf4e21ab4a7569ae8ac413/121335/256/{z}/{x}/{y}.png', {
+	//http://{s}.tile.cloudmade.com/96fd484b35cf4e21ab4a7569ae8ac413/121335/256/{z}/{x}/{y}.png
+	var tiles = L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', {
 		maxZoom: 18,
 		attribution: '',
 		trackResize : true
 	});
 	tiles.addTo(map);
+
+	var attribution = L.control.attribution({
+		prefix: false
+	});
+	attribution.addAttribution('Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">');
+	attribution.setPrefix('');
+	attribution.addTo(map);
 	var currentCenter;
 	var currentMarker;
 	//show the compass marker.
@@ -19,7 +27,7 @@ module.exports = function(app) {
 				markerColor: 'blue',
 				prefix: 'fa'
 			});
-			if(!currentMarker){			
+			if(!currentMarker){
 				currentMarker = L.marker(location, {
 					icon: icon,
 					title: 'Current Location'
@@ -32,7 +40,7 @@ module.exports = function(app) {
 			currentMarker.setLatLng(location);
 		});
 	}
-	
+
 	var recenter = function(location, duration) {
 		if (location) {
 			map.panTo(location, {
